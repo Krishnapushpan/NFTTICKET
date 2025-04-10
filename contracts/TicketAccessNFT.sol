@@ -10,7 +10,7 @@ contract TicketAccessNFT is ERC721, Ownable {
 
     constructor() ERC721("AccessNFT", "ANFT") Ownable(msg.sender) {}
 
-    function mintNFT(address to) external onlyOwner {
+    function mintNFT(address to) external  {
         _safeMint(to, nextTokenId);
         nextTokenId++;
     }
