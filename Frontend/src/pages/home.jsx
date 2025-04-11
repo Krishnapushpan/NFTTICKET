@@ -4,11 +4,11 @@ import ABI from '../assets/TicketAccessNFT.json';
 import addresses from '../assets/deployed_addresses.json';
 import { motion } from 'framer-motion';
 
-import event1Img from '../assets/event1.jpeg';
-import event2Img from '../assets/event2.jpg';
-import event3Img from '../assets/event3.jpeg';
-import event4Img from '../assets/event4.jpg';
-import eventGif from '../assets/GIF.gif';
+import event1Img from '../assets/images/event1.jpeg';
+import event2Img from '../assets/images/event2.jpg';
+import event3Img from '../assets/images/event3.jpeg';
+import event4Img from '../assets/images/event4.jpg';
+import eventGif from '../assets/images/GIF.gif';
 
 
 const events = [
