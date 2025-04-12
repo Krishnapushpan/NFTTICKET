@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 import { BrowserProvider, Contract } from 'ethers';
 import addresses from '../assets/deployed_addresses.json';
 import ABI from '../assets/TicketAccessNFT.json';
@@ -11,7 +12,7 @@ import Img5 from '../assets/images/img5.jpg';
 import Img6 from '../assets/images/img6.jpg';
 // import Img3 from '../assets/images/img3.jpg';
 import FeaturesSection from '../components/FeaturesSection';
-
+import MeetOurArtists from '../components/MeetOurArtists';
 import Heading from '../components/heading';
 const images = [Img2, Img3, Img4, Img5, Img6];
 
@@ -90,45 +91,78 @@ const Login = () => {
     <Heading />
     <div className="flex-grow flex justify-center items-center">
     <div className="flex flex-col md:flex-row w-full max-w-7xl mt-6 h-[70vh] shadow-lg">
-       {/* Left Animated Image Slideshow */}
-       <div className="md:w-4/5 w-full h-[300px] md:h-full relative overflow-hidden">
-          {images.map((src, index) => (
-            <img
-            key={index}
-            src={src}
-            alt={`Slide ${index}`}
-            className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-linear ${
-                index === currentImage ? "opacity-100" : "opacity-0"
-              }`}
-              
-          />
-          ))}
-        </div>
-  
-      {/* Right Card */}
-      <div className="md:w-2/5 w-full bg-neutral-900 text-white flex flex-col justify-center px-10 py-12 space-y-6">
-        <h1 className="text-4xl font-semibold">Login With MetaMask</h1>
-        <p className="text-lg text-gray-300">
-          Access our exclusive art exhibitions by logging in with your wallet.
-        </p>
-        <button
-          onClick={handleLogin}
-          className="bg-[#d4af7f] hover:bg-[#c89d6e] text-black py-2 px-4 rounded transition duration-300"
-        >
-          Connect Wallet
-        </button>
-        <button
-          onClick={handleMint}
-          className="bg-white text-black hover:bg-gray-200 py-2 px-4 rounded transition duration-300"
-        >
-          Mint NFT
-        </button>
-        {walletAddress && <p className="text-green-400 text-sm">Wallet: {walletAddress}</p>}
-        {error && <p className="text-red-400 text-sm">{error}</p>}
-      </div>
+  {/* Left Animated Image Slideshow */}
+  <div className="md:w-4/5 w-full h-[300px] md:h-full relative overflow-hidden">
+    {images.map((src, index) => (
+      <img
+        key={index}
+        src={src}
+        alt={`Slide ${index}`}
+        className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-linear ${
+          index === currentImage ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    ))}
+  </div>
+
+  {/* Right Card */}
+  <div className="md:w-2/5 w-full bg-[#1a5276] text-white flex flex-col justify-center px-10 py-2 space-y-8">
+    <div>
+      <p className="text-7xl font-semibold mt-[-50px]">Login</p>
+      <h1 className="text-4xl font-semibold text-[#aed6f1] mt-[20px]">With MetaMask</h1>
     </div>
+
+    <p className="text-lg text-gray-300">
+      Access our exclusive art exhibitions by logging in with your wallet.
+    </p>
+
+    {/* Animated Buttons */}
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={handleLogin}
+      className="bg-[#f4d03f]  h-[50px] text-xl font-bold hover:bg-white text-[#04426b] py-2 px-4 rounded transition duration-300 shadow-md"
+    >
+      Connect Wallet
+    </motion.button>
+
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={handleMint}
+      className="bg-[#f4d03f] h-[50px]  text-xl font-bold hover:bg-white text-[#04426b] py-2 px-4 rounded transition duration-300 shadow-md"
+    >
+      Mint NFT
+    </motion.button>
+
+    {(walletAddress || error) && (
+  <motion.div
+    animate={error ? { x: [-5, 5, -5, 5, 0] } : {}}
+    transition={{ duration: 0.4 }}
+    className="mt-4 rounded-lg bg-white p-4 text-white shadow-md w-full"
+  >
+    {walletAddress && (
+      <p className="text-sm text-[#1a5276] mt-2 break-words">
+        <span className="font-semibold text-[#1a5276]">Wallet:</span> {walletAddress}
+      </p>
+    )}
+
+    {error && (
+      <div className="mt-2 text-sm">
+        <p className="text-red-400 font-semibold">{error}</p>
+        <p className=" text-gray-400 mt-2">Mint for earning NFTs</p>
+      </div>
+    )}
+  </motion.div>
+)}
+
+
+  </div>
+</div>
+
   </div>
   <FeaturesSection />
+  <MeetOurArtists />
   </>
   );
 };

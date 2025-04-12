@@ -4,7 +4,7 @@ const FeaturesSection = () => {
   return (<>
         <hr className="flex-grow border-t-2 m-20  border-[#21618c]" />
       
-    <div className="bg-neutral-800 text-white py-14 m-12 px-4">
+    <div className="bg-neutral-600 text-white py-14 m-12 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
         {/* Feature 1 */}
         <div className="flex flex-col items-center space-y-4">
