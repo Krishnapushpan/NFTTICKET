@@ -4,7 +4,6 @@ import addresses from "../assets/deployed_addresses.json";
 import { motion } from "framer-motion";
 import { BrowserProvider, Contract } from 'ethers';
 import event1Img from '../assets/images/event1.jpg';
-import event1Img from '../assets/images/event1.jpeg';
 import event2Img from '../assets/images/event2.jpg';
 import event3Img from '../assets/images/event3.jpg';
 import event4Img from '../assets/images/event4.jpg';
@@ -139,11 +138,13 @@ const Home = () => {
                     >
                       {loadingId === event.id ? "Booking..." : "Book Ticket"}
                     </button>
-                    <img
+                    <a href="/list">
+                     <img
                       src={list}
                       alt="Arrow"
                       className="w-5 h-5 object-contain"
-                    />
+                      />
+                    </a>
                   </div>
                 </div>
               </div>
