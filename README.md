@@ -48,8 +48,8 @@ NFTTicket is a ticket booking web application that allows only verified NFT hold
 
 ## 📥 Installation
     ```bash
-    git clone https://github.com/your-username/nftticket.git
-    cd nftticket
+    git clone git@github.com:Krishnapushpan/NFTTICKET.git
+    cd NFTTICKET
     npm install
     ```
 ## ⚙️ Environment Setup
