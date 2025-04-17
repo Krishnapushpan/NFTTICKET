@@ -52,39 +52,15 @@ NFTTicket is a ticket booking web application that allows only verified NFT hold
     cd NFTTICKET
     npm install
     ```
-## ⚙️ Environment Setup
-
-  Create a .env file in the project root and add:
   
- ``` env
-  PRIVATE_KEY=your_private_key_here
-  API_KEY=your_api_key_here
-  ```
-  Make sure to keep these values secure and never commit .env to version control.
+  
 
-  ## 📦 Deploy Smart Contract
 
-  To deploy the contract on Sepolia:
-  ```bash
-  npx hardhat ignition deploy ignition/modules/TicketAccessNFT.js --network sepolia
-  ```
-  Once deployed, copy the following files into your frontend assets:
-
-  - Deployed Address:
-  ```
-  NFTTICKET/ignition/deployments/chain-11155111/deployed_addresses.json
-  ```
-  - ABI File:
-   ```
-  NFTTICKET/artifacts/contracts/TicketAccessNFT.sol/TicketAccessNFT.json
-  ```
-  Place both in:
-  ```
-  Frontend/src/assets
-  ```
 ## 🔄 Run the Application
 
   ```
+  cd Frontend
+  npm install
   npm run dev
   ```
 Open your browser and go to
