@@ -1,23 +1,37 @@
 import React from 'react'
-import {createBrowserRouter,createRoutesFromElements,RouterProvider,Route,} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home'
 import Login from './pages/login'
 import Booklist from './pages/Booklist';
-const App = () => {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-      
-              <Route path="/" element={<Login/>} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/list" element={<Booklist/>} />
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
-      
-  </>
-)
-)
-return (  
- <RouterProvider router={router}/>
-)
+const App = () => {
+
+  return (
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route 
+            path="/home" 
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/list" 
+            element={
+              <ProtectedRoute>
+                <Booklist />
+              </ProtectedRoute>
+            } 
+            />
+            </Routes>
+          </Router>
+        </AuthProvider>
+      );
 }
 export default App
